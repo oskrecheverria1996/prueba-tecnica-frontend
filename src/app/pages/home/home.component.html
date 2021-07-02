@@ -1,0 +1,17 @@
+<div>
+  <div class="row font_family_roboto">
+    <div class="col-12">
+      <div [ngSwitch]="id_menu">
+        <div *ngSwitchCase="1">
+          <app-characters></app-characters>
+        </div>
+        <div *ngSwitchCase="2">
+          <app-students></app-students>
+        </div>
+        <div *ngSwitchCase="3">
+          <app-staff></app-staff>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

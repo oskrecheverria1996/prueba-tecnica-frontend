@@ -1,0 +1,74 @@
+@import '../../@theme/styles/themes';
+@import '~bootstrap/scss/mixins/breakpoints';
+@import '~@nebular/theme/styles/global/breakpoints';
+
+@include nb-install-component() {
+       
+  input:focus {
+    border: 2px solid nb-theme(hw-color-1);
+  }
+
+  .flex-centered {
+    margin: auto;
+  }
+
+  button:focus {outline:0;}
+
+  nb-card-body {
+    display: flex;
+  }
+  
+  .icon_input_search {
+    position: absolute;
+    margin-top: 1rem;
+    margin-left: -2rem;
+  }
+
+  img {
+    object-fit: cover;
+    border-radius: 50%;
+  }
+
+  .arrow_active {
+    color: nb-theme(hw-color-1);
+  }
+
+  .tableFixHead thead th { 
+    position: sticky; top: 0; 
+  }
+  .tableFixHead thead tr:nth-child(2) th {
+    top: 35px;
+  }
+
+  .tableFixHead {
+    overflow-y: auto;
+    height: calc(107vh - 307px);
+  }
+
+  table { 
+    border: 0px;
+    border-collapse: separate;
+    border-spacing: 0px;
+    width: 100%;
+  }
+
+  th, td { 
+      padding: 8px 16px; 
+  }
+
+  th {
+    border: solid #dee2e6;
+    border-width: 1px 0px 1px 1px;
+    background: #fff;
+    }
+
+    .table-bordered td {
+      border: solid #dee2e6;
+      border-width: 0px 0px 1px 1px;
+    }
+    
+    .table thead tr th {
+      margin:0px;
+    }
+  
+}

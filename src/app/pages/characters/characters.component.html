@@ -1,0 +1,56 @@
+<div class="col-12 ml-0 mr-3 mb-3">
+  <div class="row">
+    <div class="col-12">
+      <nb-card style="height: 5rem;">
+        <div class="row m-0 mt-3 justify-content-between">
+          <div class="col-xl-3 col-lg-3 col-md-12 col-sm-12 ml-0">
+            <input (input)="filterItems(search_input);" fullWidth nbInput [(ngModel)]="search_input" 
+              #searchCharacters="ngModel" id="input_search_characters" autofocus type="text" placeholder="Buscar personajes">
+            <i class="fas fa-search icon_input_search"></i> 
+          </div>
+          <div class="col-xl-3 col-lg-3 col-md-12 col-sm-12 ml-0">
+            <ng-select [items]="houses_list" bindLabel="name" bindValue="name" id="house_select" name="house_select" #house_select="ngModel" (change)="fnChangeHouse($event)" placeholder="Seleccione una casa..."
+              [ngModelOptions]="{standalone: true}" [(ngModel)]="house_selected" [clearable]="false" style="height: 45px;" class="col-12 p-0 m-0">
+            </ng-select>
+          </div>
+        </div>
+      </nb-card>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-12">
+      <nb-card class="tableFixHead">
+        <table class="table table-striped">
+          <thead>
+            <th scope="col" class="text-center border-0">
+              Nombre
+              <span (click)="fnSort('name')">
+                <i class="fas fa-long-arrow-alt-up" [ngClass]="{'arrow_active' : sort_orientation == 'asc' && field_sort == 'name'}"></i>
+                <i class="fas fa-long-arrow-alt-down" [ngClass]="{'arrow_active' : sort_orientation == 'desc' && field_sort == 'name'}"></i>
+              </span>
+            </th>
+            <th scope="col" class="text-center border-0">
+              Patronus
+              <span (click)="fnSort('patronus')">
+                <i class="fas fa-long-arrow-alt-up" [ngClass]="{'arrow_active' : sort_orientation == 'asc' && field_sort == 'patronus'}"></i>
+                <i class="fas fa-long-arrow-alt-down" [ngClass]="{'arrow_active' : sort_orientation == 'desc' && field_sort == 'patronus'}"></i>
+              </span>
+            </th>
+            <th scope="col" class="text-center border-0" (click)="fnSort('dateOfBirth')">Edad</th>
+            <th scope="col" class="text-center border-0">Imagen</th>
+          </thead>
+          <tbody>
+            <tr *ngFor="let character of characters_list">
+              <td class="text-center">{{ character.name }}</td>
+              <td class="text-center">{{ character.patronus }}</td>
+              <td class="text-center">{{ character.dateOfBirth | age }}</td>
+              <td class="text-center">
+                <img [src]="character.image" width="64" height="64">
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </nb-card>
+    </div>
+  </div>
+</div>

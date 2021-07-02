@@ -1,0 +1,91 @@
+<nb-card id="pgp-list_company font_family_roboto" [ngClass]="{'animated slideInLeft': display_form === false, 'd-none': display_form === true, 'd-block': display_form === false}">
+    <div class="text-center mb-2">
+        <h4 class="font_family_roboto">{{ DATA_LANG?.verMenulbTittle.text }}</h4>
+        <h5 class="font_family_roboto">{{ name_project }}</h5>
+        <i class="fas fa-cog pgp-fs_icon_list pgp-pointer" style="font-size: 25px;" (click)="fnRedirectVersionsProject(name_project, id_project, id_user_plans)" nbTooltip="{{ DATA_LANG?.tooltipSeeVersionsProject?.text }}" nbTooltipPlacement="top"></i>
+    </div>
+    <nb-list *ngIf="true">
+        <!-- <nb-list-item *ngFor="let version of list_versions; let ind_version = index;" class="pgp-pointer pgp-class_switch_version font_family_roboto" [ngClass]="{'pgp-list_inactive' : (version.bDefault == false || !version.bDefault), 'pgp-list_active' : (version.bDefault == true)}"> -->
+        <nb-list-item *ngFor="let version of list_versions; let ind_version = index;" class="pgp-pointer pgp-class_switch_version font_family_roboto" [ngClass]="{'pgp-list_inactive' : (version.iIDVersion != id_version), 'pgp-list_active' : (version.iIDVersion == id_version)}">
+            <!-- <nb-user class="font_family_roboto" [name]="version.tProjectName" (click)="fntProjectNameSelected(version);" [title]="version.tProjectName"></nb-user> -->
+            <nb-user class="font_family_roboto" (click)="fntVersionNameSelected(ind_version, version, list_versions);" [name]="version.tVersionName" [title]="name_project" ></nb-user>
+            <div class="row justify-content-end">
+                <div class="col-10">
+                    <label *ngIf="version.bDefault" style="font-size: 0.75rem;margin-bottom: 0; color: #156282;">{{ DATA_LANG?.lbDefaultVersion.text }}</label>
+                </div>
+            </div>
+        </nb-list-item>
+        <!-- <nb-list-item *ngFor="let user of users">
+            <nb-user [name]="user.name" [title]="user.title"></nb-user>
+        </nb-list-item> -->
+    </nb-list>
+    <!-- <div class="list-group">
+        <a href="#" class="list-group-item list-group-item-action">Cras justo odio</a>
+        <a href="#" class="list-group-item list-group-item-action">Dapibus ac facilisis in</a>
+        <a href="#" class="list-group-item list-group-item-action">Morbi leo risus</a>
+        <a href="#" class="list-group-item list-group-item-action">Porta ac consectetur ac</a>
+        <a href="#" class="list-group-item list-group-item-action">Vestibulum at eros</a>
+    </div> -->
+
+    <div class="text-center mb-2">
+        <button type="button" class="btn btn-info font_family_roboto" 
+        style="cursor: pointer; height: 3rem;"
+        [ngClass]="{'pgp-disabled' : bPaused, 'pgp-no_disabled' : !bPaused}"
+        id="pgp-btn_send_form_add_company" 
+        (click)="open(id_project, id_company)">
+        {{ DATA_LANG?.verMenuButtonAdd.text }}
+        </button>
+    </div>
+
+    <div class="text-center mt-1 mb-1 pb-1">
+        <!-- <button type="button" class="btn btn-info font_family_roboto" id="pgp-btn_send_form_add_company" (click)="fnShowFormAddCompany();">
+            <i class="fas fa-plus-circle"></i> Add project
+        </button> -->
+
+
+
+
+        <!-- <button type="button" class="btn btn-info font_family_roboto" id="pgp-btn_send_form_add_company" (click)="fnShowFormAddCompany();">
+            <i class="fas fa-plus-circle"></i> Add company
+        </button> -->
+    </div>
+</nb-card>
+
+
+<div id="pgp-form_add_company" size="small" [ngClass]="{'animated slideInRight': display_form === true, 'd-none': display_form === false, 'd-block': display_form === true}">
+    
+    <div class="text-center m-2">
+        <h1>Add company</h1>
+    </div>
+    <div class="ml-2 mr-2">
+        <form aria-labelledby="title">
+            <div class="form-control-group mt-2">
+                <label class="label" for="input-email">Company name:</label>
+                <div class="custom-file">
+                    <input type="file" class="custom-file-input" id="customFile">
+                    <label class="custom-file-label" for="customFile">Choose file</label>
+                </div>
+            </div>
+            <div class="form-control-group mt-2">
+                <label class="label" for="input-company-name">Company name:</label>
+                <input nbInput
+                fullWidth
+                name="company-name"
+                id="input-company-name"
+                placeholder="Company name" 
+                autofocus>
+            </div>
+            <div class="text-center mt-1 mb-1">
+                <button fullWidth type="button" class="btn btn-danger" (click)="fnShowListCompany();">
+                    <i class="fas fa-plus-circle"></i> Cancel
+                </button>
+            </div>
+            <div class="text-center mt-1 mb-1">
+                <button fullWidth type="button" class="btn btn-info" (click)="fnSaveDataCompany();">
+                    <i class="fas fa-plus-circle"></i> Add company
+                </button>
+            </div>
+        </form>
+    </div>
+    
+</div>

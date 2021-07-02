@@ -1,0 +1,24 @@
+<div class="header-container font_family_roboto" [class.left]="position === 'normal'"
+  [class.right]="position === 'inverse'">
+  <a class="navigation">
+    <i class="nb-menu"></i>
+  </a>
+  <ngx-theme-switcher *ngIf="false"></ngx-theme-switcher>
+</div>
+<div style="width: 96%;">
+  <div class="row justify-content-center">
+    <div class="logo" (click)="fnGoHome()">
+      <img src="../../../../assets/images/hogwarts.png" style="height: 62px;" alt="Hogwarts logo" id="hogwarts_logo">
+    </div>
+  </div>
+</div>
+
+<!-- <div class="header-container">
+  <nb-actions size="medium" [class.right]="position === 'normal'" [class.left]="position === 'inverse'" style="height: 4rem;">
+    <nb-action *nbIsGranted="['view', 'user']" id="test_1">
+      <nb-user id="test_2" [nbContextMenu]="userMenu" tag="account" [name]="user.email" [picture]="user?.picture">
+      </nb-user>
+    </nb-action>
+    <nb-action class="control-item" icon="fas fa-home" id="home_button" (click)="fnGoHome()"></nb-action>
+  </nb-actions>
+</div> -->

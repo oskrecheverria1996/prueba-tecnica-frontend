@@ -1,12 +1,13 @@
 import { Injectable } from '@angular/core';
 import { environment } from '../../../environments/environment';
+import { NbToastrService } from '@nebular/theme';
 
 @Injectable({
   providedIn: 'root'
 })
 export class UtilitiesService {
 
-  constructor() { }
+  constructor(private toastrService: NbToastrService,) { }
 
   /**
    * Funcion para obtener ruta de la api
@@ -65,6 +66,17 @@ export class UtilitiesService {
       });
     });
     observer(results);
+  }
+
+  /**
+   * Funcion que muestra un mensaje valiendose de componente de nebular
+   * @param {array} position
+   * @param {string} status
+   * @param {callback} message
+   */  
+  showToast(position, status, message) {
+    const duration = status == 'warning' ? 11000 : 6000;
+    this.toastrService.show(status, message, { position, status, duration });
   }
 
 }

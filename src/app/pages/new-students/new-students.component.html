@@ -1,3 +1,64 @@
-<p>
-  new-students works!
-</p>
+<div class="col-12 ml-0 mr-3 mb-3">
+  <div class="row">
+    <div class="col-12">
+      <nb-card style="height: 5rem;">
+        <div class="row m-0 mt-3 justify-content-between">
+          <div class="col-xl-3 col-lg-3 col-md-12 col-sm-12 ml-0">
+            <input (input)="filterItems(search_input);" fullWidth nbInput [(ngModel)]="search_input" 
+              #searchCharacters="ngModel" id="input_search_characters" autofocus type="text" placeholder="Buscar personajes">
+            <i class="fas fa-search icon_input_search"></i> 
+          </div>
+          <div class="col-xl-3 col-lg-3 col-md-12 col-sm-12 ml-0 text-right">
+            <button nbButton id="btn-add-student" (click)="fnShowAddStudent()" class="btn btn-primary m-1">Agregar solicitud</button>
+          </div>
+        </div>
+      </nb-card>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-12">
+      <nb-card class="tableFixHead">
+        <table class="table table-striped">
+          <thead>
+            <th scope="col" class="text-center border-0">
+              Nombre
+              <span (click)="fnSort('name')">
+                <i class="fas fa-long-arrow-alt-up" [ngClass]="{'arrow_active' : sort_orientation == 'asc' && field_sort == 'name'}"></i>
+                <i class="fas fa-long-arrow-alt-down" [ngClass]="{'arrow_active' : sort_orientation == 'desc' && field_sort == 'name'}"></i>
+              </span>
+            </th>
+            <th scope="col" class="text-center border-0">
+              Actor
+              <span (click)="fnSort('actor')">
+                <i class="fas fa-long-arrow-alt-up" [ngClass]="{'arrow_active' : sort_orientation == 'asc' && field_sort == 'patronus'}"></i>
+                <i class="fas fa-long-arrow-alt-down" [ngClass]="{'arrow_active' : sort_orientation == 'desc' && field_sort == 'patronus'}"></i>
+              </span>
+            </th>
+            <th scope="col" class="text-center border-0">
+              Fecha nacimiento
+              <span (click)="fnSort('dateBirth')">
+                <i class="fas fa-long-arrow-alt-up" [ngClass]="{'arrow_active' : sort_orientation == 'asc' && field_sort == 'dateBirth'}"></i>
+                <i class="fas fa-long-arrow-alt-down" [ngClass]="{'arrow_active' : sort_orientation == 'desc' && field_sort == 'dateBirth'}"></i>
+              </span>
+            </th>
+            <th scope="col" class="text-center border-0">
+              Fecha solicitud
+              <span (click)="fnSort('dateSolicitude')">
+                <i class="fas fa-long-arrow-alt-up" [ngClass]="{'arrow_active' : sort_orientation == 'asc' && field_sort == 'dateSolicitude'}"></i>
+                <i class="fas fa-long-arrow-alt-down" [ngClass]="{'arrow_active' : sort_orientation == 'desc' && field_sort == 'dateSolicitude'}"></i>
+              </span>
+            </th>
+          </thead>
+          <tbody>
+            <tr *ngFor="let student of new_students_list">
+              <td class="text-center">{{ student.name }}</td>
+              <td class="text-center">{{ student.actor }}</td>
+              <td class="text-center">{{ student.dateBirth | date: 'dd/MM/yyyy' }}</td>
+              <td class="text-center">{{ student.dateSolicitude | date: 'dd/MM/yyyy' }}</td>
+            </tr>
+          </tbody>
+        </table>
+      </nb-card>
+    </div>
+  </div>
+</div>

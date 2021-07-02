@@ -1,0 +1,65 @@
+@import '../../../@theme/styles/themes';
+@import '~bootstrap/scss/mixins/breakpoints';
+@import '~@nebular/theme/styles/global/breakpoints';
+
+@include nb-install-component() {
+
+   nb-card {
+    max-width: 587px;
+    max-height: 600px;
+    overflow-y: auto;
+  }
+
+  button:focus {
+    outline: 0;
+    cursor: pointer;
+  }
+  
+  .title {
+    text-align: center;
+  }
+
+  .font_family_roboto {
+    font-family: 'Roboto';
+  }
+  
+  .backgroud_layout {
+    background-color: #FFF;
+  }
+
+  .pointer {
+    cursor: pointer;
+  }
+
+  input:focus {
+    border: 2px solid nb-theme(hw-color-1);
+  }
+
+  input {
+    height: 3rem;
+  }
+
+  ::ng-deep nb-dialog-container {
+    height: 80vw;
+    max-width: 95vw;
+    max-height: 81vh;
+  }
+
+  .pgp-title_item_list {
+    display: inline-block;
+  }
+
+  ::ng-deep nb-card-header {
+    display: block !important;
+  }
+
+  #button-add-student {
+    background-color: nb-theme(hw-color-1);
+    text-transform: none;
+    cursor: pointer;
+    width: nb-theme(hw-width-btn-crud); 
+    height: nb-theme(hw-heigth-btn-crud);
+    font-family: 'Roboto';
+  }
+
+}

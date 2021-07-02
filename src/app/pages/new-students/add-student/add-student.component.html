@@ -1,0 +1,41 @@
+<div class="container">
+  <div class="row">
+    <div class="col-12">
+      <nb-card class="font_family_roboto card_content">
+        <nb-card-header class="font_family_roboto">Agregar estudiante</nb-card-header>
+        <nb-card-body>
+          <div class="container">
+            <div class="row ml-0 mr-0">
+              <!-- <pre>
+                {{ myForm | json }}
+              </pre> -->
+              <form (ngSubmit)="fnAddStudent()" [formGroup]="myForm" style="width: 630px;" #addNewPricesListForm="ngForm" aria-labelledby="title">
+                <div class="col-12 pl-0 pr-0">
+                  <div class="form-group">
+                    <label>Nombre: </label>                                         
+                    <input nbInput formControlName="name" name="name" autofocus  
+                      type="text" class="form-control" placeholder="Nombre" style="height: 45px;">
+                  </div>
+                  <div class="form-group">
+                    <label>Actor: </label>                                         
+                    <input nbInput formControlName="actor" name="actor" autofocus  
+                      type="text" class="form-control" placeholder="Actor" style="height: 45px;">
+                  </div>
+                  <div class="form-group">
+                    <label>Fecha de nacimiento: </label>    
+                    <input nbInput fullWidth placeholder="Fecha de nacimiento" formControlName="dateBirth" [nbDatepicker]="dateTimePicker">
+                    <nb-datepicker #dateTimePicker format="dd-MM-yyyy"></nb-datepicker>
+                  </div>
+                </div>
+                <button id="button-add-student" nbButton [disabled]="myForm.invalid" type="submit">Agregar</button>
+                <!-- <pgp-button status="action" [submitted]="submitted" (click)="fnCreatePricesList(data_prices_list)">{{ DATA_LANG_GENERAL?.buttonSave.text }}</pgp-button>
+                &nbsp;&nbsp;&nbsp;
+                <pgp-button status="cancel" [submitted]="submitted" (click)="fnCancelCreatePricesList()">{{ DATA_LANG_GENERAL?.buttonCancel.text }}</pgp-button> -->
+              </form>
+            </div>
+          </div>
+        </nb-card-body>
+      </nb-card>  
+    </div>  
+  </div>
+</div>
